@@ -10,7 +10,7 @@
 		"concurrently": "^3.5.0"
 	},
 	"scripts": {
-		"build": "concurrently \"cd client && yarn build && npm install --only=dev\"",
+		"build": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
 		"start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=3001 yarn start\"",
 		"heroku-postbuild": "yarn build"
 	}
