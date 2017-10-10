@@ -12,6 +12,7 @@
 	"scripts": {
 		"build": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
 		"start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=3001 yarn start\"",
+		"start:prod": "cd server && yarn start:prod",
 		"heroku-postbuild": "yarn build"
 	}
 }
