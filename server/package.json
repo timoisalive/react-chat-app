@@ -1,0 +1,12 @@
+{
+	"name": "react-chat-app-2",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"socket.io": "^2.0.3"
+	},
+	"scripts": {
+		"start": "node server.js"
+	}
+}

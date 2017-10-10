@@ -1,0 +1,17 @@
+{
+	"name": "react-chat-app-2",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"engines": {
+		"node": "6.11.3"
+	},
+	"dependencies": {
+		"concurrently": "^3.5.0"
+	},
+	"scripts": {
+		"build": "concurrently \"cd client && yarn build\"",
+		"start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=3001 yarn start\"",
+		"heroku-postbuild": "yarn build"
+	}
+}
