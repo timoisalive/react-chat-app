@@ -1,12 +1,17 @@
-const constants = require("./constants");
-const server = require("http").createServer();
+const express = require("express");
+const app = express();
+const server = require("http").Server(app);
 const io = require("socket.io")(server);
+const path = require("path");
+const PORT = process.env.PORT || 3001;
+const constants = require("./constants");
+
 let rooms = [];
 let messages = [];
 let idCounter = 0;
 
 function pushMessage(message) {
-	console.log("pushMessage");
+	console.log("pushMessage:", message);
 	// Save message and emit to clients
 	message.id = "message" + idCounter++;
 	message.timestamp = new Date().getTime();
@@ -15,7 +20,7 @@ function pushMessage(message) {
 }
 
 function onServerListening() {
-	console.log("onServerListening");
+	console.log("onServerListening, port:", PORT);
 	// Create a few rooms
 	rooms.push({ id: "room" + idCounter++, name: "Room 1" });
 	rooms.push({ id: "room" + idCounter++, name: "Room 2" });
@@ -34,5 +39,12 @@ function onSocketConnect(socket) {
 	socket.on(constants.MESSAGE_SEND, pushMessage);
 }
 
+// Priority serve any static files
+app.use(express.static(path.resolve(__dirname, "../client/build")));
+// All remaining requests return the React app, so it can handle routing
+app.get("/", function(request, response){
+	response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
+
 // Start by listening to server
-server.listen(3001, onServerListening);
+server.listen(PORT, onServerListening);
