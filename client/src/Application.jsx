@@ -11,7 +11,7 @@ import * as strings from "./strings";
 class Application extends Component {
 	componentDidMount() {
 		// Connect socket
-		let socket = io("http://localhost:3000");
+		let socket = io();
 		socket.on(constants.SOCKET_CONNECT, () => this.props.onSocketConnect(socket));
 		socket.on(constants.ROOM_RECEIVE, this.props.onRoomReceive);
 		socket.on(constants.MESSAGE_RECEIVE, this.props.onMessageReceive);
