@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import io from "socket.io-client";
 import InputForm from "./components/InputForm";
 import MessageListContainer from "./components/MessageListContainer";
-import RoomListContainer from "./components/RoomListContainer";
 import * as actions from "./actions";
 import * as constants from "./constants";
 import * as strings from "./strings";
@@ -26,15 +25,14 @@ class Application extends Component {
 		// If username is not yet set, render username input. Otherwise render the chat rooms.
 		if(this.props.username === null) {
 			return (
-				<div className="col flex-grid center">
+				<div className="flex flex-col flex-center">
 					<InputForm className="login-form" label={ strings.USERNAME_LABEL } submitLabel={ strings.LOGIN } onSubmit={ this.props.onUsernameSubmit } />
 				</div>
 			)
 		} else {
 			return (
-				<div className="col flex-col">
-					<RoomListContainer />
-					<MessageListContainer onMessageSend={ this.onMessageSend }/>
+				<div className="flex flex-col flex-center">
+					<MessageListContainer className="flex chat-room" onMessageSend={ this.onMessageSend }/>
 				</div>
 			)
 		}
