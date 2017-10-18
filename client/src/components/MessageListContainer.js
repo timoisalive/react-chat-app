@@ -8,7 +8,10 @@ import * as strings from "../strings";
 
 class MessageListContainer extends Component {
 	scrollToBottom = () => {
-		const scrollElement = this.refs.element.parentElement.parentElement.parentElement.parentElement;
+		let scrollElement = this.refs.element;
+		while(scrollElement.parentElement) {
+			scrollElement = scrollElement.parentElement;
+		}
 		const maxScrollTop = scrollElement.scrollHeight - scrollElement.clientHeight;
 		ReactDOM.findDOMNode(scrollElement).scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
 	}
