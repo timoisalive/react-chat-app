@@ -32,7 +32,7 @@ class Application extends Component {
 		} else {
 			return (
 				<div className="flex flex-col flex-center">
-					<MessageListContainer className="flex chat-room" onMessageSend={ this.onMessageSend }/>
+					<MessageListContainer className="flex flex-col chat-room" onMessageSend={ this.onMessageSend }/>
 				</div>
 			)
 		}
