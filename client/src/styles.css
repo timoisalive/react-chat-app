@@ -1,6 +1,7 @@
 body > div {
 	height: 100%;
 	display: flex;
+	padding: 0 1em 0 1em;
 }
 
 .flex {
