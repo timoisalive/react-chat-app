@@ -1,23 +1,50 @@
 body > div {
 	height: 100%;
+	display: flex;
+	padding: 1em;
 }
 
-.ui.grid {
-	margin-top: 0;
-	margin-bottom: 0;
-	margin-left: 0;
-	margin-right: 0;
+.flex-grid {
+	display: flex;
 }
 
-.flex-column {
+.flex-col {
 	display: flex;
 	flex-direction: column;
 }
 
-.flex-one {
+.col {
 	flex: 1;
 }
 
-.full-height {
-	height: 100%;
+.center {
+	justify-content: center;
+	align-items: center;
 }
+
+.login-form {
+	width: 100%;
+	max-width: 30em !important;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+	/* .login-form {
+		width: 100%;
+	} */
+}
+
+/* Tablet / iPad Portrait */
+/* @media (min-width: 768px) and (max-width: 991px) { */
+@media (min-width: 768px) {
+	.login-form {
+		width: 50%;
+	}
+}
+
+/* Computer / Desktop / iPad Landscape */
+/* @media (min-width: 992px) {
+	.login-form {
+		width: 50%;
+	}
+} */
