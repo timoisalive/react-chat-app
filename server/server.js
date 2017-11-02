@@ -32,9 +32,7 @@ function onServerListening() {
 function onSocketConnect(socket) {
 	console.log("onSocketConnect");
 	// Emit rooms to the client
-	for (var i = 0; i < rooms.length; i++) {
-		io.emit(constants.ROOM_RECEIVE, rooms[i]);
-	}
+	rooms.map(room => io.emit(constants.ROOM_RECEIVE, room));
 	// Listen for new messages being sent by client
 	socket.on(constants.MESSAGE_SEND, pushMessage);
 }
