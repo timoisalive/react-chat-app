@@ -10,8 +10,8 @@
 		"concurrently": "^3.5.0"
 	},
 	"scripts": {
-		"build": "concurrently \"cd client && npm install && npm install --only=dev --no-shrinkwrap && yarn build\" \"cd server && yarn build\"",
-		"start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=3001 yarn start\"",
+		"build": "concurrently \"cd client-web && npm install && npm install --only=dev --no-shrinkwrap && yarn build\" \"cd server && yarn build\"",
+		"start": "concurrently \"cd client-web && PORT=3000 yarn start\" \"cd server && PORT=3001 yarn start\"",
 		"start:prod": "cd server && yarn start:prod",
 		"heroku-postbuild": "yarn build"
 	}
